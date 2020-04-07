@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname+'/public'));
 
-mongoose.connect("mongodb://ffee76c0-0ee0-4-231-b9ee:ptfhmuNA7flKaMvIyhF2GFJRGJcWFCnMfxyC50yWYfnQxtpBvrAvFIOSo2fDU8NFqPv3vcbo4MIlyhJq9zFddg==@ffee76c0-0ee0-4-231-b9ee.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",{ useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(`${process.env.cosmodb}`,{ useUnifiedTopology: true, useNewUrlParser: true });
 
 
 const viewsSchema = new mongoose.Schema({
