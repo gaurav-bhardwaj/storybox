@@ -1,0 +1,14 @@
+<%- include("partials/header"); -%>
+    <h1>Contact</h1>
+    <p> <%= contactContent %> </p>
+
+    <form class="item" action="/contact" method="post">
+    <div class="form-group mx-sm-3 mb-2">
+    <input class="form-control-plaintext" type="text" name="uname" placeholder="Your Name" autocomplete="off">
+    <input class="form-control-plaintext" type="email" name="email" placeholder="abc@xyz.com" autocomplete="off">
+    </div>
+    <button class="btn btn-primary" type="submit" name="Submit">Submit</button>
+
+    </form>
+
+<%- include("partials/footer"); -%>
