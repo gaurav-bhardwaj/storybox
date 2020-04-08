@@ -7,6 +7,11 @@ on:
   push:
     branches:
       - master
+env:
+  AZURE_WEBAPP_NAME: storybox
+  AZURE_WEBAPP_PACKAGE_PATH: '/home/site/wwwroot'
+  NODE_VERSION: '12.14.0'
+
 
 jobs:
   build-and-deploy:
@@ -18,11 +23,10 @@ jobs:
     - name: Set up Node.js version
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: ${{ env.NODE_VERSION }}
 
     - name: npm install, build, and test
       run: |
-        npm run clean
         npm install
         npm run build --if-present
         npm run test --if-present
@@ -30,7 +34,7 @@ jobs:
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v1
       with:
-        app-name: 'storybox'
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
         slot-name: 'production'
         publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-        package: .
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
