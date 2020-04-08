@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'storybox'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_62863ed6d3b748b2a7c52cec548f0b4f }}
+        publish-profile: ${{ secrets.azureWebAppPublishProfile }}
         package: .
